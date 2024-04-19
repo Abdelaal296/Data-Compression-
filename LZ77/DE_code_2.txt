@@ -1,0 +1,49 @@
+s = input("Enter Tags  like this model (<3,2,b> , <4,1,a>) : ")
+list_p = []
+list_l = []
+list_n = []
+
+s = s.replace(" ", "")
+s = s.replace(">", "")
+s = s.replace("<", "")
+s = s.replace('"', "")
+
+
+# <0,0,"A"> , <0,0,"B"> , <2,1,"A"> ,  <3,2,"B"> , <5,3,"B"> , <2,2,"B"> , <5,5,"B"> , <1,1,"A">
+
+# <0,0,"A"> , <0,0,"B"> , <2,2,"B"> , <2,1,"A"> , <3,2,"B"> , <5,3,"B"> , <5,5,"B"> , <1,1,"A">
+
+# <0,0,"c"> , <0,0,"a"> , <0,0,"b"> , <0,0,"r"> , <3,1,"c"> , <2,1,"d"> , <7,4,"r"> , <3,5,"d">
+
+# <0,0,"h"> , <0,0,"e"> , <0,0,"l"> , <1,1,"o"> , <0,0,"i"> , <0,0,"t"> , <0,0,"s"> , <0,0,"m"> , <8,1,"h" > , <10,4,"a"> , <0,0,"g"> , <2,1,"i"> , <0,0,"n">
+
+s = s.split(',')
+
+i=0
+while i < len(s):
+
+    list_p.append(int(s[i]))
+    i += 1
+    list_l.append(int(s[i]))
+    i += 1
+    list_n.append(str(s[i]))
+    i += 1
+
+
+out = ""
+
+for i in range(len(list_p)):
+
+    if list_p[i] == 0:
+        out += list_n[i]
+
+    else :
+
+        for k in range(list_l[i]):
+           out += out[len(out) - list_p[i]]
+
+        out += list_n[i]
+
+
+#<0,0,h><0,0,e><0,0,l><1,1,o><0,0,i><0,0,t><0,0,s><0,0,m><8,1,h><10,4,a><0,0,g><2,1,i><0,0,n>
+print(out)
